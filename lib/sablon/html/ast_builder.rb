@@ -37,7 +37,7 @@ module Sablon
       def process_nodes(html_nodes, properties)
         html_nodes.flat_map do |node|
           # get tags from config
-          parent_tag = fetch_tag(node.parent.name) if node.parent.name
+          parent_tag = fetch_tag(node.parent.name) if node.parent&.name
           tag = fetch_tag(node.name)
 
           # remove all text nodes if the tag doesn't accept them

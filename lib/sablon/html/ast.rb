@@ -261,8 +261,10 @@ module Sablon
         node.xpath("./li/#{@list_tag}").each do |list|
           # transfer attributes from parent now because the list tag will
           # no longer be a child and won't inheirit them as usual
-          transfer_node_attributes(list.children, list.parent.attributes)
-          list.parent.add_next_sibling(list)
+          unless list.parent.nil?
+            transfer_node_attributes(list.children, list.parent.attributes)
+            list.parent.add_next_sibling(list)
+          end
         end
       end
     end

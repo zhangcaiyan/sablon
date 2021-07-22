@@ -81,6 +81,8 @@ module Sablon
         # if all nodes are inline then add them to the existing paragraph
         # otherwise replace the paragraph with the new content.
         if all_inline?
+          return if display_node.parent.nil?
+
           pr_tag = display_node.parent.at_xpath('./w:rPr')
           add_siblings_to(display_node.parent, pr_tag)
           display_node.parent.remove

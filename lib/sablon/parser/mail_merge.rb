@@ -145,6 +145,8 @@ module Sablon
       private
 
       def build_complex_field(node)
+        return if node.nil?
+
         possible_field_node = node.parent
         field_nodes = [possible_field_node]
         while possible_field_node && possible_field_node.search(".//w:fldChar[@w:fldCharType='end']").empty?
